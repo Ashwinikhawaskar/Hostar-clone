@@ -273,7 +273,7 @@ We will install a sonar scanner in the tools.
               stage('Terraform init') {
                   steps {
                       echo "Initializing Terraform..."
-                      dir('Terraform') {
+                      dir('terraform') {
                           sh 'terraform init'
                       }
                   }
@@ -282,7 +282,7 @@ We will install a sonar scanner in the tools.
               stage('Terraform validate') {
                   steps {
                       echo "Validating Terraform configuration..."
-                      dir('Terraform') {
+                      dir('terraform') {
                           sh 'terraform validate'
                       }
                   }
@@ -291,7 +291,7 @@ We will install a sonar scanner in the tools.
               stage('Terraform plan') {
                   steps {
                       echo "Running Terraform plan..."
-                      dir('Terraform') {
+                      dir('terraform') {
                           sh 'terraform plan'
                       }
                   }
@@ -300,7 +300,7 @@ We will install a sonar scanner in the tools.
               stage('Terraform apply/destroy') {
                   steps {
                       echo "Applying or Destroying Terraform configuration..."
-                      dir('Terraform') {
+                      dir('terraform') {
                           // Use the parameter to determine the action
                           sh "terraform ${params.action} --auto-approve"
                       }
@@ -402,3 +402,5 @@ pipeline{
                 }
             }
         }
+     }
+}
